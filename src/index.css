@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --ink: #0E1013;
+    --surface: #171A20;
+    --surface-2: #1F232B;
+    --border: #2A2F3A;
+    --text: #F1EFE9;
+    --text-dim: #9BA0AC;
+    --violet: #7C6CF6;
+    --violet-soft: rgba(124, 108, 246, 0.14);
+    --green: #3ED598;
+    --amber: #F5B84A;
+    --red: #FF5C6A;
+    --radius: 14px;
+
+    /* shadcn/ui token overrides */
+    --background: var(--ink);
+    --foreground: var(--text);
+    --card: var(--surface);
+    --card-foreground: var(--text);
+    --popover: var(--surface);
+    --popover-foreground: var(--text);
+    --primary: var(--violet);
+    --primary-foreground: #ffffff;
+    --secondary: var(--surface-2);
+    --secondary-foreground: var(--text);
+    --muted: var(--surface-2);
+    --muted-foreground: var(--text-dim);
+    --accent: var(--violet-soft);
+    --accent-foreground: var(--violet);
+    --destructive: var(--red);
+    --destructive-foreground: #ffffff;
+    --border-color: var(--border);
+    --input: var(--surface-2);
+    --ring: var(--violet);
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--ink);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
