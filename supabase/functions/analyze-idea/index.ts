@@ -38,13 +38,14 @@ CRITICAL RULES:
 - If the idea has no clear monetization or is "Uber for X" without a twist, score it below 40.
 - Do NOT pad risks or competitors with generic answers. Be specific and harsh.
 - A score between 50-70 should be the EXCEPTION, not the norm. Most ideas land between 20-50.
+- THE OUTPUT MUST BE ENTIRELY IN FRENCH (except for the JSON keys which must remain in English).
 
 Score distribution you should aim for:
 - 0-33 (kill): Saturated market, weak demand, no differentiator → verdict: kill
 - 34-69 (pivot): Some signal but major flaws → verdict: pivot
 - 70-100 (build): Genuine gap, strong monetization, defensible angle → verdict: build
 
-Return ONLY a valid JSON object with no markdown, no explanation:
+Return ONLY a valid JSON object with no markdown, no explanation, with all string values in FRENCH:
 {
   "score": <integer 0-100>,
   "verdict": "<build | pivot | kill>",
