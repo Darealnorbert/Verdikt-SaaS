@@ -10,15 +10,25 @@ export default function UpdatePassword() {
   const [message, setMessage] = useState<string | null>(null)
 
   useEffect(() => {
-    // Si l'utilisateur n'a pas de hash dans l'URL et n'est pas connecté
-    // (normalement la récupération de mot de passe le connecte automatiquement)
+    // Écoute les changements d'état d'authentification (ex: quand le token de l'URL est vérifié)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN' || event === 'PASSWORD_RECOVERY') {
+        // Session établie avec succès
+      }
+    })
+
+    // Vérification initiale
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession()
-      if (!session && !window.location.hash) {
+      
+      // Si on n'a pas de session, et qu'il n'y a ni hash (#access_token) ni PKCE code (?code=) dans l'URL
+      if (!session && !window.location.hash && !window.location.search.includes('code=')) {
         navigate('/auth')
       }
     }
     checkSession()
+
+    return () => subscription.unsubscribe()
   }, [navigate])
 
   async function handleSubmit(e: React.FormEvent) {
@@ -26,6 +36,14 @@ export default function UpdatePassword() {
     setLoading(true)
     setError(null)
     setMessage(null)
+
+    // Vérifier si la session est bien active avant de tenter la mise à jour
+    const { data: { session } } = await supabase.auth.getSession()
+    if (!session) {
+      setError("La session a expiré ou le lien est invalide. Veuillez refaire une demande de mot de passe oublié.")
+      setLoading(false)
+      return
+    }
 
     const { error } = await supabase.auth.updateUser({ password })
     
