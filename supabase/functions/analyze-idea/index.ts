@@ -21,9 +21,19 @@ serve(async (req) => {
       { global: { headers: { Authorization: req.headers.get('Authorization')! } } }
     )
 
-    // 2. Get user
+    // 2. Get user & Check limits
     const { data: { user } } = await supabaseClient.auth.getUser()
     if (!user) throw new Error('Not authenticated')
+
+    const { data: profile } = await supabaseClient
+      .from('profiles')
+      .select('plan, analyses_used')
+      .eq('id', user.id)
+      .single()
+      
+    if (profile?.plan === 'free' && (profile?.analyses_used || 0) >= 1) {
+      throw new Error("LIMIT_REACHED")
+    }
 
     // 3. Call Groq API (free, no credit card needed)
     const groqApiKey = Deno.env.get('GROQ_API_KEY')
@@ -116,7 +126,18 @@ Return ONLY a valid JSON object with no markdown, no explanation, with all strin
       .select()
       .single()
 
-    if (error) throw new Error(`DB error: ${error.message}`)
+    if (error) {
+      console.error('Error inserting analysis:', error)
+      throw error
+    }
+
+    // Update analyses_used
+    if (profile?.plan === 'free') {
+      await supabaseClient
+        .from('profiles')
+        .update({ analyses_used: (profile.analyses_used || 0) + 1 })
+        .eq('id', user.id)
+    }
 
     return new Response(JSON.stringify(analysis), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

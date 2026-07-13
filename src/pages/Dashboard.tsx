@@ -20,7 +20,9 @@ type Analysis = {
 export default function Dashboard() {
   const navigate = useNavigate()
   const [analyses, setAnalyses] = useState<Analysis[]>([])
+  const [profile, setProfile] = useState<{ plan: string, analyses_used: number } | null>(null)
   const [loading, setLoading] = useState(true)
+  const [upgrading, setUpgrading] = useState(false)
   const [expandedId, setExpandedId] = useState<string | null>(null)
 
   useEffect(() => {
@@ -39,6 +41,17 @@ export default function Dashboard() {
       if (!error && data) {
         setAnalyses(data)
       }
+
+      const { data: profileData } = await supabase
+        .from('profiles')
+        .select('plan, analyses_used')
+        .eq('id', session.user.id)
+        .single()
+        
+      if (profileData) {
+        setProfile(profileData)
+      }
+
       setLoading(false)
     }
 
@@ -48,6 +61,28 @@ export default function Dashboard() {
   async function handleLogout() {
     await supabase.auth.signOut()
     navigate('/')
+  }
+
+  async function handleUpgrade() {
+    setUpgrading(true)
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/fedapay-checkout`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${session?.access_token}`
+        }
+      })
+      const data = await response.json()
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        alert("Erreur de paiement: " + (data.error || 'Inconnue'))
+      }
+    } catch (error) {
+      alert("Erreur lors de la redirection")
+    }
+    setUpgrading(false)
   }
 
   async function exportPdf(analysisId: string) {
@@ -91,12 +126,28 @@ export default function Dashboard() {
           }} />
           Verdikt
         </div>
-        <button 
-          onClick={handleLogout}
-          style={{ background: 'var(--surface-2)', border: '1px solid var(--border)', padding: '8px 16px', borderRadius: 8, color: 'var(--text-dim)', fontSize: 14, cursor: 'pointer' }}
-        >
-          Déconnexion
-        </button>
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+          {profile?.plan === 'founder' ? (
+            <span style={{ background: 'rgba(62,213,152,.15)', color: 'var(--green)', padding: '6px 12px', borderRadius: 100, fontSize: 13, fontWeight: 700, fontFamily: "'JetBrains Mono'" }}>
+              👑 Plan Founder
+            </span>
+          ) : (
+            <button 
+              onClick={handleUpgrade}
+              disabled={upgrading}
+              style={{ background: 'var(--violet)', border: 'none', padding: '8px 16px', borderRadius: 8, color: '#fff', fontSize: 14, fontWeight: 600, cursor: upgrading ? 'not-allowed' : 'pointer' }}
+            >
+              {upgrading ? 'Redirection...' : 'Passer Premium 🚀'}
+            </button>
+          )}
+          
+          <button 
+            onClick={handleLogout}
+            style={{ background: 'var(--surface-2)', border: '1px solid var(--border)', padding: '8px 16px', borderRadius: 8, color: 'var(--text-dim)', fontSize: 14, cursor: 'pointer' }}
+          >
+            Déconnexion
+          </button>
+        </div>
       </nav>
 
       <div style={{ maxWidth: 1120, margin: '48px auto', padding: '0 24px' }}>
