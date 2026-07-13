@@ -137,7 +137,7 @@ export default function Dashboard() {
               disabled={upgrading}
               style={{ background: 'var(--violet)', border: 'none', padding: '8px 16px', borderRadius: 8, color: '#fff', fontSize: 14, fontWeight: 600, cursor: upgrading ? 'not-allowed' : 'pointer' }}
             >
-              {upgrading ? 'Redirection...' : 'Passer Premium 🚀'}
+              {upgrading ? 'Redirection...' : 'Passer Premium 🚀 (5000 FCFA)'}
             </button>
           )}
           

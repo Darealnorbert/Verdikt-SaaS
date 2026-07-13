@@ -27,7 +27,7 @@ serve(async (req) => {
     // Create FedaPay Transaction
     const origin = req.headers.get('origin') || 'https://verdikt-saas.vercel.app'
     const transactionPayload = {
-      description: "Verdikt - Plan Founder (Analyses illimitées)",
+      description: "Verdikt - Plan Founder (Analyses illimitées) - 5000 FCFA",
       amount: 5000,
       currency: { iso: "XOF" },
       callback_url: `${origin}/dashboard?payment=success`,

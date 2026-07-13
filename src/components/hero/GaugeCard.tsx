@@ -81,7 +81,11 @@ export default function GaugeCard() {
       setNote(VERDICT_MAP[v!].note)
     } catch (err: any) {
       console.error('[Verdikt] Error:', err)
-      setNote(`Erreur : ${err.message}`)
+      if (err.message === 'LIMIT_REACHED' || err.message.includes('LIMIT_REACHED')) {
+        setNote("Tu as utilisé ton analyse gratuite. Passe au Plan Founder depuis ton tableau de bord pour des analyses illimitées !")
+      } else {
+        setNote(`Erreur : ${err.message}`)
+      }
     } finally {
       setRunning(false)
       setBtnLabel("Relancer l'analyse")
