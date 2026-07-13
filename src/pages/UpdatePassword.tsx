@@ -11,7 +11,7 @@ export default function UpdatePassword() {
 
   useEffect(() => {
     // Écoute les changements d'état d'authentification (ex: quand le token de l'URL est vérifié)
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
       if (event === 'SIGNED_IN' || event === 'PASSWORD_RECOVERY') {
         // Session établie avec succès
       }
