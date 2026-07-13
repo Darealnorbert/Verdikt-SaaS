@@ -127,20 +127,6 @@ export default function Dashboard() {
           Verdikt
         </div>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          {profile?.plan === 'founder' ? (
-            <span style={{ background: 'rgba(62,213,152,.15)', color: 'var(--green)', padding: '6px 12px', borderRadius: 100, fontSize: 13, fontWeight: 700, fontFamily: "'JetBrains Mono'" }}>
-              👑 Plan Founder
-            </span>
-          ) : (
-            <button 
-              onClick={handleUpgrade}
-              disabled={upgrading}
-              style={{ background: 'var(--violet)', border: 'none', padding: '8px 16px', borderRadius: 8, color: '#fff', fontSize: 14, fontWeight: 600, cursor: upgrading ? 'not-allowed' : 'pointer' }}
-            >
-              {upgrading ? 'Redirection...' : 'Passer Premium 🚀 (5000 FCFA)'}
-            </button>
-          )}
-          
           <button 
             onClick={handleLogout}
             style={{ background: 'var(--surface-2)', border: '1px solid var(--border)', padding: '8px 16px', borderRadius: 8, color: 'var(--text-dim)', fontSize: 14, cursor: 'pointer' }}
@@ -151,7 +137,22 @@ export default function Dashboard() {
       </nav>
 
       <div style={{ maxWidth: 1120, margin: '48px auto', padding: '0 24px' }}>
-        <h1 style={{ fontSize: 32, fontWeight: 700, marginBottom: 24 }}>Mes analyses</h1>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24, flexWrap: 'wrap', gap: 16 }}>
+          <h1 style={{ fontSize: 32, fontWeight: 700, margin: 0 }}>Mes analyses</h1>
+          {profile?.plan === 'founder' ? (
+            <span style={{ background: 'rgba(62,213,152,.15)', color: 'var(--green)', padding: '8px 16px', borderRadius: 100, fontSize: 14, fontWeight: 700, fontFamily: "'JetBrains Mono'" }}>
+              👑 Plan Founder
+            </span>
+          ) : (
+            <button 
+              onClick={handleUpgrade}
+              disabled={upgrading}
+              style={{ background: 'var(--violet)', border: 'none', padding: '10px 20px', borderRadius: 8, color: '#fff', fontSize: 15, fontWeight: 600, cursor: upgrading ? 'not-allowed' : 'pointer' }}
+            >
+              {upgrading ? 'Redirection...' : 'Passer Premium 🚀 (5000 FCFA)'}
+            </button>
+          )}
+        </div>
         
         {analyses.length === 0 ? (
           <div style={{ background: 'var(--surface)', padding: 48, borderRadius: 16, textAlign: 'center', border: '1px solid var(--border)' }}>

@@ -32,7 +32,7 @@ serve(async (req) => {
       .single()
       
     if (profile?.plan === 'free' && (profile?.analyses_used || 0) >= 1) {
-      throw new Error("LIMIT_REACHED")
+      throw new Error("Tu as épuisé ton analyse gratuite. Clique sur 'Verdikt' en haut à gauche pour aller sur ton Dashboard et passer au Plan Founder pour des analyses illimitées !")
     }
 
     // 3. Call Groq API (free, no credit card needed)
