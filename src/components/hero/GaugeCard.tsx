@@ -24,14 +24,27 @@ export default function GaugeCard() {
   const displayRef = useRef<number>(0)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
+  // Retrieve pending idea if any
+  useState(() => {
+    const pending = localStorage.getItem('pendingIdea')
+    if (pending) {
+      setIdea(pending)
+      // We don't remove it here yet, we will remove it when they run the analysis, 
+      // or we just set it as initial state.
+    }
+  })
+
   async function runAnalysis() {
     if (running) return
 
     const { data: { session } } = await supabase.auth.getSession()
     if (!session) {
+      if (idea.trim()) localStorage.setItem('pendingIdea', idea)
       navigate('/auth')
       return
     }
+
+    localStorage.removeItem('pendingIdea')
 
     setRunning(true)
     setBtnLabel('Analyse en cours...')

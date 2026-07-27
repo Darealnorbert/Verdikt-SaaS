@@ -141,7 +141,14 @@ export default function Dashboard() {
       <div style={{ maxWidth: 1120, margin: '48px auto', padding: '0 24px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24, flexWrap: 'wrap', gap: 16 }}>
           <h1 style={{ fontSize: 32, fontWeight: 700, margin: 0 }}>Mes analyses</h1>
-          {profile?.plan === 'founder' ? (
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <button
+              onClick={() => navigate('/')}
+              style={{ background: 'var(--surface-2)', border: '1px solid var(--border)', padding: '10px 20px', borderRadius: 8, color: 'var(--text)', fontSize: 15, fontWeight: 600, cursor: 'pointer' }}
+            >
+              + Nouvelle analyse
+            </button>
+            {profile?.plan === 'founder' ? (
             <span style={{ background: 'rgba(62,213,152,.15)', color: 'var(--green)', padding: '8px 16px', borderRadius: 100, fontSize: 14, fontWeight: 700, fontFamily: "'JetBrains Mono'" }}>
               👑 Plan Founder
             </span>
@@ -153,7 +160,8 @@ export default function Dashboard() {
             >
               {upgrading ? 'Redirection...' : 'Passer Premium 🚀 (5000 FCFA)'}
             </button>
-          )}
+            )}
+          </div>
         </div>
         
         {analyses.length === 0 ? (

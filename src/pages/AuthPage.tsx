@@ -15,7 +15,13 @@ export default function AuthPage() {
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) navigate('/dashboard')
+      if (session) {
+        if (localStorage.getItem('pendingIdea')) {
+          navigate('/')
+        } else {
+          navigate('/dashboard')
+        }
+      }
     })
     return () => subscription.unsubscribe()
   }, [navigate])
