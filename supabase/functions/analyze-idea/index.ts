@@ -31,7 +31,8 @@ serve(async (req) => {
       .eq('id', user.id)
       .single()
       
-    if (profile?.plan === 'free' && (profile?.analyses_used || 0) >= 1) {
+    // TEMP: Limit temporarily removed for testing (set to 99999 instead of 1)
+    if (profile?.plan === 'free' && (profile?.analyses_used || 0) >= 99999) {
       throw new Error("Tu as épuisé ton analyse gratuite. Clique sur 'Verdikt' en haut à gauche pour aller sur ton Dashboard et passer au Plan Founder pour des analyses illimitées !")
     }
 
