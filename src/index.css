@@ -2,10 +2,10 @@
 
 @layer base {
   :root {
-    --ink: #0E1013;
-    --surface: #171A20;
-    --surface-2: #1F232B;
-    --border: #2A2F3A;
+    --ink: #0A1128; /* Deep Blue Background */
+    --surface: #141B33;
+    --surface-2: #1A2340;
+    --border: #2B3A67;
     --text: #F1EFE9;
     --text-dim: #9BA0AC;
     --violet: #0055FF; /* Bright Royal Blue */

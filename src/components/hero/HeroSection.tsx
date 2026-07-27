@@ -48,9 +48,9 @@ export default function HeroSection() {
 
           {/* H1 */}
           <h1 style={{ fontSize: 52, lineHeight: 1.05, fontWeight: 700, marginBottom: 22 }}>
-            Sais si ton idée{' '}
-            <span style={{ color: 'var(--green)' }}>tient la route</span>
-            . Avant d'y passer 6 mois.
+            L' outil pour les{' '}
+            <span style={{ color: 'var(--green)' }}>Saas Builders</span>
+            {' '}africains.
           </h1>
 
           {/* Subtitle */}
