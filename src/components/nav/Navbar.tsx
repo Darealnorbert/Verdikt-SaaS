@@ -18,8 +18,10 @@ export default function Navbar() {
           <span style={{
             width: 22, height: 22, borderRadius: 6,
             background: 'linear-gradient(135deg, var(--green), var(--violet))',
-            flexShrink: 0, display: 'inline-block',
-          }} />
+            display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: 14
+          }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
           Verdikt
         </div>
 

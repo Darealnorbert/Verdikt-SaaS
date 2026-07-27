@@ -69,10 +69,12 @@ export default function UpdatePassword() {
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontFamily: "'Space Grotesk'", fontWeight: 700, fontSize: 24, color: 'var(--text)', marginBottom: 32, justifyContent: 'center' }}>
           <span style={{
-            width: 30, height: 30, borderRadius: 8,
+            width: 22, height: 22, borderRadius: 6,
             background: 'linear-gradient(135deg, var(--green), var(--violet))',
-            display: 'inline-block', flexShrink: 0
-          }} />
+            display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: 14
+          }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
           Verdikt
         </div>
 
