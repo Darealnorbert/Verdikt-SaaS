@@ -59,7 +59,7 @@ export default function UpdatePassword() {
   return (
     <div style={{
       display: 'flex', minHeight: '100vh', alignItems: 'center',
-      justifyContent: 'center', background: 'var(--ink)', padding: 24
+      justifyContent: 'center', padding: 24
     }}>
       <div style={{
         width: '100%', maxWidth: 400, background: 'var(--surface)',

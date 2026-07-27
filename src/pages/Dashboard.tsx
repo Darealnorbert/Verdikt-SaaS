@@ -116,7 +116,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--ink)' }}>
+    <div style={{ minHeight: '100vh' }}>
       <nav style={{ padding: '18px 24px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 9, fontFamily: "'Space Grotesk'", fontWeight: 700, fontSize: 19, color: 'var(--text)' }} onClick={() => navigate('/')} className="cursor-pointer">
           <span style={{
