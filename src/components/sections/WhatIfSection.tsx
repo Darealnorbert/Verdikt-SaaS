@@ -21,15 +21,15 @@ export default function WhatIfSection() {
           display: 'grid',
           gridTemplateColumns: 'repeat(4, 1fr)',
           gap: 1,
-          background: 'var(--border)',
+          background: 'rgba(255, 255, 255, 0.08)',
           border: '1px solid var(--border)',
           borderRadius: 16,
           overflow: 'hidden',
         }}
-          className="whatif-grid"
+          className="whatif-grid glass-panel"
         >
           {items.map(item => (
-            <div key={item.num} style={{ background: 'var(--surface)', padding: '30px 24px' }}>
+            <div key={item.num} style={{ background: 'transparent', padding: '30px 24px' }}>
               <span style={{ fontFamily: "'JetBrains Mono'", fontSize: 12, color: 'var(--violet)', marginBottom: 14, display: 'block' }}>
                 {item.num}
               </span>

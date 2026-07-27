@@ -35,7 +35,7 @@ export default function PricingSection() {
         {/* Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }} className="pricing-grid">
           {/* Card 1 */}
-          <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 16, padding: 30, display: 'flex', flexDirection: 'column' }}>
+          <div className="glass-panel" style={{ borderRadius: 16, padding: 30, display: 'flex', flexDirection: 'column' }}>
             <div style={{ fontSize: 14, color: 'var(--text-dim)', marginBottom: 10 }}>Découverte</div>
             <div style={{ fontFamily: "'Space Grotesk'", fontSize: 36, fontWeight: 700, marginBottom: 4 }}>0 <span style={{ fontSize: 16, fontFamily: "'Inter'" }}>FCFA</span> <span style={{ fontSize: 14, color: 'var(--text-dim)', fontFamily: "'Inter'", fontWeight: 400 }}>/ mois</span></div>
             <div style={{ fontSize: 13, color: 'var(--text-dim)', marginBottom: 22 }}>Pour tester une première idée</div>
@@ -53,7 +53,7 @@ export default function PricingSection() {
           </div>
 
           {/* Card 2 - Featured */}
-          <div style={{ border: '1px solid var(--violet)', borderRadius: 16, padding: 30, display: 'flex', flexDirection: 'column', position: 'relative', background: 'linear-gradient(180deg, rgba(124,108,246,.08), var(--surface) 40%)' }}>
+          <div className="glass-panel" style={{ border: '1px solid var(--violet)', boxShadow: '0 0 30px rgba(41, 121, 255, 0.2)', borderRadius: 16, padding: 30, display: 'flex', flexDirection: 'column', position: 'relative' }}>
             <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: 'var(--violet)', color: '#fff', fontSize: 11, fontWeight: 700, padding: '4px 12px', borderRadius: 100, fontFamily: "'JetBrains Mono'" }}>Le plus choisi</div>
             <div style={{ fontSize: 14, color: 'var(--text-dim)', marginBottom: 10 }}>Fondateur</div>
             <div style={{ fontFamily: "'Space Grotesk'", fontSize: 36, fontWeight: 700, marginBottom: 4 }}>{annual ? '4000' : '5000'} <span style={{ fontSize: 16, fontFamily: "'Inter'" }}>FCFA</span> <span style={{ fontSize: 14, color: 'var(--text-dim)', fontFamily: "'Inter'", fontWeight: 400 }}>/ mois</span></div>
@@ -72,7 +72,7 @@ export default function PricingSection() {
           </div>
 
           {/* Card 3 */}
-          <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 16, padding: 30, display: 'flex', flexDirection: 'column' }}>
+          <div className="glass-panel" style={{ borderRadius: 16, padding: 30, display: 'flex', flexDirection: 'column' }}>
             <div style={{ fontSize: 14, color: 'var(--text-dim)', marginBottom: 10 }}>Studio</div>
             <div style={{ fontFamily: "'Space Grotesk'", fontSize: 36, fontWeight: 700, marginBottom: 4 }}>{annual ? '6500' : '8000'} <span style={{ fontSize: 16, fontFamily: "'Inter'" }}>FCFA</span> <span style={{ fontSize: 14, color: 'var(--text-dim)', fontFamily: "'Inter'", fontWeight: 400 }}>/ mois</span></div>
             <div style={{ fontSize: 13, color: 'var(--text-dim)', marginBottom: 22 }}>Pour les équipes et incubateurs</div>

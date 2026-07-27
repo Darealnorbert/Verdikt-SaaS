@@ -47,12 +47,9 @@ export default function TerminalSection() {
         </div>
 
         {/* Terminal mockup */}
-        <div style={{
-          background: 'var(--ink)',
-          border: '1px solid var(--border)',
+        <div className="glass-panel" style={{
           borderRadius: 16,
           overflow: 'hidden',
-          boxShadow: '0 30px 60px -20px rgba(0,0,0,.6)',
         }}>
           {/* Bar */}
           <div style={{ display: 'flex', gap: 6, padding: '14px 16px', borderBottom: '1px solid var(--border)' }}>

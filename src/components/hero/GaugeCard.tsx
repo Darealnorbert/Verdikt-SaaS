@@ -95,9 +95,7 @@ export default function GaugeCard() {
   const arcColor = verdict === 'build' ? 'var(--green)' : verdict === 'pivot' ? 'var(--amber)' : verdict === 'kill' ? 'var(--red)' : 'var(--violet)'
 
   return (
-    <div style={{
-      background: 'var(--surface)',
-      border: '1px solid var(--border)',
+    <div className="glass-panel" style={{
       borderRadius: 20,
       padding: 28,
       position: 'relative',
@@ -124,8 +122,8 @@ export default function GaugeCard() {
 Plus tu es précis, plus l'analyse sera pertinente.`}
         style={{
           width: '100%',
-          background: 'var(--surface-2)',
-          border: '1px solid var(--border)',
+          background: 'rgba(0, 0, 0, 0.2)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
           borderRadius: 10,
           color: 'var(--text)',
           fontFamily: "'Inter'",

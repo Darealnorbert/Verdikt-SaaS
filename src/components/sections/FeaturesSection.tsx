@@ -15,9 +15,7 @@ export default function FeaturesSection() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18 }} className="feat-grid">
           {features.map(feat => (
-            <div key={feat.title} style={{
-              background: 'var(--surface)',
-              border: '1px solid var(--border)',
+            <div key={feat.title} className="glass-panel" style={{
               borderRadius: 14,
               padding: 26,
             }}>

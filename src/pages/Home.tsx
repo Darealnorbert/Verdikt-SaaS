@@ -12,7 +12,9 @@ import Footer from '@/components/nav/Footer'
 
 export default function Home() {
   return (
-    <div style={{ background: 'var(--ink)', minHeight: '100vh' }}>
+    <div style={{ background: 'var(--ink)', minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
+      <div className="orb-1" />
+      <div className="orb-2" />
       <Navbar />
       <HeroSection />
       <WhatIfSection />

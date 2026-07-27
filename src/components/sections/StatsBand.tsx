@@ -6,11 +6,12 @@ const stats = [
 
 export default function StatsBand() {
   return (
-    <section style={{
-      background: 'linear-gradient(135deg, var(--violet-soft), transparent)',
+    <section className="glass-panel" style={{
       borderTop: '1px solid var(--border)',
       borderBottom: '1px solid var(--border)',
       padding: '96px 0',
+      position: 'relative',
+      zIndex: 1,
     }}>
       <div style={{ maxWidth: 1120, margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, textAlign: 'center' }} className="stats-grid">
         {stats.map(s => (

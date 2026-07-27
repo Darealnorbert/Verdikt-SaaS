@@ -17,12 +17,11 @@ export default function HowItWorksSection() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 24 }} className="steps-grid">
           {steps.map(step => (
             <div key={step.num} style={{ paddingTop: 8 }}>
-              <div style={{
+              <div className="glass-panel" style={{
                 fontFamily: "'Space Grotesk'",
                 fontSize: 28,
                 fontWeight: 700,
                 color: 'var(--violet)',
-                border: '1px solid var(--border)',
                 width: 48,
                 height: 48,
                 borderRadius: 12,
@@ -30,7 +29,6 @@ export default function HowItWorksSection() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginBottom: 18,
-                background: 'var(--surface)',
               }}>
                 {step.num}
               </div>
