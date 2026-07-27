@@ -8,9 +8,9 @@
     --border: #2A2F3A;
     --text: #F1EFE9;
     --text-dim: #9BA0AC;
-    --violet: #2979FF; /* Now Blue */
-    --violet-soft: rgba(41, 121, 255, 0.14);
-    --green: #00E5FF; /* Now Cyan */
+    --violet: #0055FF; /* Bright Royal Blue */
+    --violet-soft: rgba(0, 85, 255, 0.15);
+    --green: #00F0FF; /* Neon Cyan */
     --amber: #F5B84A;
     --red: #FF5C6A;
     --radius: 14px;
@@ -63,41 +63,53 @@
 
 @layer utilities {
   .glass-panel {
-    background: rgba(23, 26, 32, 0.4) !important;
-    backdrop-filter: blur(24px) saturate(150%);
-    -webkit-backdrop-filter: blur(24px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.1);
   }
 
   /* Orbs pour l'arrière-plan */
-  .orb-1, .orb-2 {
+  .orb-1, .orb-2, .orb-3 {
     position: absolute;
     border-radius: 50%;
-    filter: blur(100px);
+    filter: blur(120px);
     z-index: -1;
-    opacity: 0.5;
+    opacity: 0.8; /* Plus visible */
     animation: float 20s ease-in-out infinite;
   }
   .orb-1 {
     background: var(--violet);
-    width: 400px;
-    height: 400px;
-    top: 10%;
-    left: -10%;
+    width: 600px;
+    height: 600px;
+    top: -5%;
+    left: -15%;
   }
   .orb-2 {
     background: var(--green);
-    width: 300px;
-    height: 300px;
-    top: 40%;
-    right: -5%;
-    animation-delay: -10s;
+    width: 500px;
+    height: 500px;
+    top: 30%;
+    right: -10%;
+    animation-delay: -7s;
+  }
+  .orb-3 {
+    background: #4F46E5; /* Deep Indigo */
+    width: 700px;
+    height: 700px;
+    bottom: -10%;
+    left: 20%;
+    animation-delay: -14s;
+    filter: blur(150px);
   }
 
   @keyframes float {
-    0% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-30px) scale(1.05); }
-    100% { transform: translateY(0) scale(1); }
+    0% { transform: translateY(0) scale(1) translateX(0); }
+    33% { transform: translateY(-40px) scale(1.1) translateX(30px); }
+    66% { transform: translateY(20px) scale(0.9) translateX(-20px); }
+    100% { transform: translateY(0) scale(1) translateX(0); }
   }
 }

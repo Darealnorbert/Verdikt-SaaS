@@ -15,6 +15,7 @@ export default function Home() {
     <div style={{ background: 'var(--ink)', minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
       <div className="orb-1" />
       <div className="orb-2" />
+      <div className="orb-3" />
       <Navbar />
       <HeroSection />
       <WhatIfSection />
