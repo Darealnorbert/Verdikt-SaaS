@@ -50,7 +50,7 @@
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-color: var(--ink);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.025'%3E%3Cpath d='M0,50 L25,25 L50,50 L25,75 Z M50,50 L75,25 L100,50 L75,75 Z' /%3E%3Cpath d='M25,25 L50,0 L75,25 M25,75 L50,100 L75,75' /%3E%3Cpath d='M0,15 L10,0 L20,15 L30,0 L40,15 L50,0 L60,15 L70,0 L80,15 L90,0 L100,15' /%3E%3Cpath d='M0,85 L10,100 L20,85 L30,100 L40,85 L50,100 L60,85 L70,100 L80,85 L90,100 L100,85' /%3E%3Ccircle cx='25' cy='50' r='3' /%3E%3Ccircle cx='75' cy='50' r='3' /%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' opacity='0.09'%3E%3Cpath d='M0,50 L25,25 L50,50 L25,75 Z M50,50 L75,25 L100,50 L75,75 Z' /%3E%3Cpath d='M25,25 L50,0 L75,25 M25,75 L50,100 L75,75' /%3E%3Cpath d='M0,15 L10,0 L20,15 L30,0 L40,15 L50,0 L60,15 L70,0 L80,15 L90,0 L100,15' /%3E%3Cpath d='M0,85 L10,100 L20,85 L30,100 L40,85 L50,100 L60,85 L70,100 L80,85 L90,100 L100,85' /%3E%3Ccircle cx='25' cy='50' r='3' /%3E%3Ccircle cx='75' cy='50' r='3' /%3E%3C/g%3E%3C/svg%3E");
     background-size: 100px 100px;
     background-repeat: repeat;
     color: var(--text);
