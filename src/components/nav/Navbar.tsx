@@ -1,7 +1,22 @@
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { supabase } from '@/lib/supabase'
 
 export default function Navbar() {
   const navigate = useNavigate()
+  const [session, setSession] = useState<any>(null)
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    })
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [])
 
   return (
     <nav style={{
@@ -47,7 +62,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <button
-          onClick={() => navigate('/auth')}
+          onClick={() => navigate(session ? '/dashboard' : '/auth')}
           style={{
             background: 'var(--text)',
             color: 'var(--ink)',
@@ -60,7 +75,7 @@ export default function Navbar() {
             cursor: 'pointer'
           }}
         >
-          Analyser mon idée
+          {session ? 'Mon Dashboard' : 'Analyser mon idée'}
         </button>
       </div>
 
