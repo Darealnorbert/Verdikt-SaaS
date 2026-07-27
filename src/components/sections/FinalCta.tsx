@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom'
+
 export default function FinalCta() {
+  const navigate = useNavigate()
   return (
     <section style={{ padding: '96px 0' }}>
       <div style={{ maxWidth: 1120, margin: '0 auto', padding: '0 24px' }}>
@@ -33,6 +36,7 @@ export default function FinalCta() {
               e.currentTarget.style.transform = ''
               e.currentTarget.style.boxShadow = ''
             }}
+            onClick={() => navigate('/auth')}
           >
             Analyser mon idée — gratuit
           </button>

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import GaugeCard from './GaugeCard'
 
 const avatars = [
@@ -8,6 +9,8 @@ const avatars = [
 ]
 
 export default function HeroSection() {
+  const navigate = useNavigate()
+
   return (
     <header style={{ padding: '88px 0 60px' }}>
       <div style={{
@@ -77,6 +80,7 @@ export default function HeroSection() {
                 e.currentTarget.style.transform = ''
                 e.currentTarget.style.boxShadow = ''
               }}
+              onClick={() => navigate('/auth')}
             >
               Analyser mon idée — gratuit
             </button>
