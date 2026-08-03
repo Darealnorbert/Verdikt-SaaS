@@ -75,7 +75,7 @@ export default function Navbar() {
             cursor: 'pointer'
           }}
         >
-          {session ? 'Mon Dashboard' : 'Analyser mon idée'}
+          {session ? 'Mon Dashboard' : "S'inscrire / Se connecter"}
         </button>
       </div>
 
