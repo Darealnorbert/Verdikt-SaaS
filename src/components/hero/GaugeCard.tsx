@@ -40,7 +40,7 @@ export default function GaugeCard() {
     const { data: { session } } = await supabase.auth.getSession()
     if (!session) {
       if (idea.trim()) localStorage.setItem('pendingIdea', idea)
-      navigate('/auth')
+      window.dispatchEvent(new Event('open-auth-modal'))
       return
     }
 

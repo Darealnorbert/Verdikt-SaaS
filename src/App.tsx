@@ -1,18 +1,22 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from '@/pages/Home'
-import AuthPage from '@/pages/AuthPage'
-import Dashboard from '@/pages/Dashboard'
-import UpdatePassword from '@/pages/UpdatePassword'
+import AuthModal from '@/components/auth/AuthModal'
+
+const Home = lazy(() => import('@/pages/Home'))
+const Dashboard = lazy(() => import('@/pages/Dashboard'))
+const UpdatePassword = lazy(() => import('@/pages/UpdatePassword'))
 
 export default function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/auth" element={<AuthPage />} />
-        <Route path="/update-password" element={<UpdatePassword />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
+      <AuthModal />
+      <Suspense fallback={<div style={{ minHeight: '100vh', background: 'var(--ink)' }}></div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/update-password" element={<UpdatePassword />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </Suspense>
     </Router>
   )
 }

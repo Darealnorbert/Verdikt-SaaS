@@ -62,7 +62,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <button
-          onClick={() => navigate(session ? '/dashboard' : '/auth')}
+          onClick={() => session ? navigate('/dashboard') : window.dispatchEvent(new Event('open-auth-modal'))}
           style={{
             background: 'var(--text)',
             color: 'var(--ink)',
