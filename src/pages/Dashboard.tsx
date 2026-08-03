@@ -87,24 +87,44 @@ export default function Dashboard() {
 
   async function exportPdf(analysisId: string) {
     try {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session) return
-
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/generate-pdf`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${session.access_token}`
-        },
-        body: JSON.stringify({ analysis_id: analysisId })
-      })
-
-      const data = await response.json()
-      if (data.url) {
-        window.open(data.url, '_blank')
-      } else {
-        alert("Erreur lors de la génération du PDF")
+      const analysis = analyses.find(a => a.id === analysisId)
+      if (!analysis || !analysis.report) {
+        alert("Les données d'analyse sont introuvables.")
+        return
       }
+
+      const { jsPDF } = await import('jspdf')
+      const doc = new jsPDF()
+      
+      doc.setFontSize(22)
+      doc.text('Rapport Verdikt', 20, 20)
+      
+      doc.setFontSize(16)
+      doc.text('Idée:', 20, 40)
+      doc.setFontSize(12)
+      const splitIdea = doc.splitTextToSize(analysis.idea_text, 170)
+      doc.text(splitIdea, 20, 50)
+      
+      let yPos = 50 + (splitIdea.length * 7)
+      
+      doc.setFontSize(16)
+      doc.text(`Score: ${analysis.score}/100`, 20, yPos)
+      doc.text(`Verdict: ${analysis.verdict === 'build' ? 'A CONSTRUIRE' : analysis.verdict === 'pivot' ? 'A PIVOTER' : 'A ABANDONNER'}`, 20, yPos + 10)
+
+      yPos += 30
+      doc.text('Taille du marché:', 20, yPos)
+      doc.setFontSize(12)
+      const splitMarket = doc.splitTextToSize(analysis.report.market_size || 'N/A', 170)
+      doc.text(splitMarket, 20, yPos + 10)
+      
+      yPos += 10 + (splitMarket.length * 7) + 10
+      doc.setFontSize(16)
+      doc.text('Plan d\'action:', 20, yPos)
+      doc.setFontSize(12)
+      const splitAction = doc.splitTextToSize(analysis.report.action_plan || 'N/A', 170)
+      doc.text(splitAction, 20, yPos + 10)
+
+      doc.save(`Verdikt_${analysis.id}.pdf`)
     } catch (error) {
       console.error(error)
       alert("Erreur lors de la génération du PDF")
